@@ -1,5 +1,6 @@
 <template>
-  <div class="header">
+ <div>
+    <div class="header">
     <span>豆瓣</span>
     <icon type="search" size="16" color="#00b600"></icon>
     <button>打开豆瓣App</button>
@@ -11,6 +12,7 @@
       <span class="more-link">更多</span>
     </p>
   </div>
+ </div>
 </template>
 
 <script>
@@ -36,6 +38,7 @@ export default {};
   button {
     width: 200rpx;
     height: 58rpx;
+    line-height: 58rpx;
     border: 8rpx;
     color: #fff;
     background-color: #42bd56;
