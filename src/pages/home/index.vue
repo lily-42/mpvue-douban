@@ -1,18 +1,21 @@
 <template>
- <div>
+  <div>
     <div class="header">
-    <span>豆瓣</span>
-    <icon type="search" size="16" color="#00b600"></icon>
-    <button>打开豆瓣App</button>
+      <span>豆瓣</span>
+      <icon type="search" size="16" color="#00b600"></icon>
+      <button>打开豆瓣App</button>
+    </div>
+    <!-- 影院热映 -->
+    <div class="movie-item">
+      <p class="title">
+        <span>影院热映</span>
+        <span class="more-link">更多</span>
+      </p>
+      <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
+        <view id="demo1" class="scroll-view-item_H" v-for="(item,index) in 20" :key="index">{{index}}</view>
+      </scroll-view>
+    </div>
   </div>
-  <!-- 影院热映 -->
-  <div class="movie-item">
-    <p class="title">
-      <span>影院热映</span>
-      <span class="more-link">更多</span>
-    </p>
-  </div>
- </div>
 </template>
 
 <script>
@@ -44,16 +47,25 @@ export default {};
     background-color: #42bd56;
   }
 }
-.movie-item{
-  .title{
+.movie-item {
+  .title {
     height: 87rpx;
     display: flex;
     justify-content: space-between;
     padding: 0 36rpx;
     align-items: center;
-    .more-link{
+    .more-link {
       color: #42bd56;
     }
   }
+}
+.scroll-view_H {
+  white-space: nowrap;
+}
+.scroll-view-item_H {
+  width: 200rpx;
+  height: 286rpx;
+  background-color: green;
+  display: inline-block;
 }
 </style>
