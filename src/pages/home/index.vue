@@ -38,46 +38,62 @@
 </template>
 
 <script>
+import request from "@/utils/request.js";
 export default {
   data() {
     return {
-      categoryList:[
-      {
-        name:'影院热映',
-        param:'in_theaters',
-        list:[]
-      },
-       {
-        name:'Top250',
-        param:'top250',
-        list:[]
-      }
+      categoryList: [
+        {
+          name: "影院热映",
+          param: "in_theaters",
+          list: []
+        },
+        {
+          name: "Top250",
+          param: "top250",
+          list: []
+        }
       ]
-
     };
   },
   created() {
-    this.categoryList.forEach((v)=>{
+    this.categoryList.forEach(v => {
       this.getMovies(v);
-    })
+    });
   },
   methods: {
     getMovies(cate) {
-      wx.request({
-        url:
-          `https://api.douban.com/v2/movie/${cate.param}?apikey=0df993c66c0c636e29ecbb5344252a4a`,
+      request({
+        url: `https://api.douban.com/v2/movie/${
+          cate.param
+        }?apikey=0df993c66c0c636e29ecbb5344252a4a`,
         header: {
-          "content-type": "application/x-www-form-urlencoded"
-        },
-        success: res => {
-          cate.list = res.data.subjects;
-          let movies = res.data.subjects;
-          movies.forEach(v => {
-            v.starNum = Math.ceil(v.rating.average / 2);
-          });
-          // console.log(res);
+          "Content-Type": "application/x-www-form-urlencoded"
         }
+      }).then(res => {
+        cate.list = res.data.subjects;
+        let movies = res.data.subjects;
+        movies.forEach(v => {
+          v.starNum = Math.ceil(v.rating.average / 2);
+        });
+        console.log(res);
+        
       });
+      // wx.request({
+      //   url:
+      //     `https://api.douban.com/v2/movie/${cate.param}?apikey=0df993c66c0c636e29ecbb5344252a4a`,
+      //   header: {
+      //     "content-type": "application/x-www-form-urlencoded"
+      //   },
+      //   success: res => {
+      //     cate.list = res.data.subjects;
+      //     let movies = res.data.subjects;
+      //     movies.forEach(v => {
+      //       v.starNum = Math.ceil(v.rating.average / 2);
+      //     });
+      //     // console.log(res);
+      //   }
+      // });
     }
   }
 };
