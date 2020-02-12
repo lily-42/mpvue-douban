@@ -46,7 +46,15 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": 0,
+					"name": "列表页面",
+					"pathName": "pages/more/main",
+					"query": "param=top250",
+					"scene": null
+				}
+			]
 		}
 	}
 }
